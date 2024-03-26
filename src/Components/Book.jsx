@@ -1,12 +1,13 @@
 
 import PropTypes from 'prop-types';
 import { IoIosStarOutline } from "react-icons/io";
+import { Link } from 'react-router-dom';
 
 const Book = ({book}) => {
 
-    const {category,bookName,author,image,rating,tags}= book
+    const {bookId ,category,bookName,author,image,rating,tags}= book
     return (
-        <div>
+        <Link to={`/book/${bookId}`}>
 
             <div className="border-2 p-6 rounded-xl h-full">
 
@@ -29,7 +30,7 @@ const Book = ({book}) => {
                 </div>
             </div>
             
-        </div>
+        </Link>
     );
 };
 

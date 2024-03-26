@@ -3,7 +3,7 @@
 const PagesToRead = () => {
     return (
         <div>
-            <h1>Pages to Read</h1>
+            <h1>Books</h1>
         </div>
     );
 };

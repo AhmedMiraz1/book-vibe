@@ -8,7 +8,7 @@ const Banner = () => {
 
                 <div className=''>
                     <h1 className='text-5xl font-bold text-[#131313] mb-12'>Books to freshen up <br /> your bookshelf</h1>
-                    <Link  className='text-white font-bold text-xl bg-[#23BE0A] px-7 py-5 rounded-xl'>View The List</Link>
+                    <Link to='/listedBooks'  className='text-white font-bold text-xl bg-[#23BE0A] px-7 py-5 rounded-xl'>View The List</Link>
                 </div>
                 <div>
                     <img src={banner}alt="" />

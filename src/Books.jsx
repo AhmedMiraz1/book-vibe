@@ -11,7 +11,7 @@ fetch('books.json')
 .then(data => setBooks(data))
 
     },[])
-    console.log(books)
+  
     
     return (
         <div>
