@@ -6,9 +6,9 @@ import { saveToBookCard } from "../utils/utils";
 
 const BookDetails = () => {
   const books = useLoaderData();
-  const { bookId } = useParams();
-  const idInt = parseInt(bookId);
-  const book = books.find((book) => book.bookId === idInt);
+  const { id } = useParams();
+  const idInt = parseInt(id);
+  const book = books.find((book) => book.id === idInt);
 
   const { category, bookName, author, image, rating, tags, review,totalPages,publisher,yearOfPublishing } = book;
 
@@ -16,10 +16,7 @@ const BookDetails = () => {
     saveToBookCard(idInt)
     toast(" you added successfully ");
   };
-  const handelAddToWishlist = () => {
-    saveToBookCard(idInt)
-    toast(" you added successfully ");
-  };
+
 
 
 
@@ -63,7 +60,7 @@ const BookDetails = () => {
             >
               Read{" "}
             </button>
-            <button  onClick={handelAddToWishlist}
+            <button  onClick={handelAddToRead}
              className="bg-[#50B1C9] text-white font-medium text-lg px-7 py-4 rounded-xl">Wishlist</button>
       
         </div>

@@ -10,11 +10,11 @@ const getStoredToBookCard = ()=>{
 
 
 
-const saveToBookCard = bookId =>{
+const saveToBookCard = id =>{
     const storedToBookCard =getStoredToBookCard()
-    const exist =storedToBookCard.find(addBook => addBook === bookId);
+    const exist =storedToBookCard.find(addBook => addBook === id);
     if(!exist){
-        storedToBookCard.push(bookId)
+        storedToBookCard.push(id)
         localStorage.setItem('book-card', JSON.stringify(storedToBookCard))
     }
 }

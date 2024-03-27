@@ -18,7 +18,7 @@ fetch('books.json')
             <h1 className="text-4xl font-bold text-[#131313] text-center my-9 ">Books</h1>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {
-                    books.map(book => <Book key={book.bookId} book={book} />)
+                    books.map(book => <Book key={book.id} book={book} />)
                 }
             </div>
         </div>

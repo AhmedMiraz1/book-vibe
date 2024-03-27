@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Book = ({book}) => {
 
-    const {bookId ,category,bookName,author,image,rating,tags}= book
+    const {id ,category,bookName,author,image,rating,tags}= book
     return (
-        <Link to={`/book/${bookId}`}>
+        <Link to={`/book/${id}`}>
 
             <div className="border-2 p-6 rounded-xl h-full">
 
