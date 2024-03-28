@@ -57,8 +57,8 @@ const PagesToRead = () => {
     <div className="mt-28 w-full">
         
       <BarChart
-        width={500}
-        height={400}
+        width={1450}
+        height={700}
         data={data}
         margin={{
           top: 20,

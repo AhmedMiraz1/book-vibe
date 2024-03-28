@@ -48,9 +48,9 @@ const BookDetails = () => {
 
   return (
     <div>
-      <div className="mt-12 flex flex-col lg:flex-row gap-12 h-full w-full">
-        <div className=" bg-[#1313130D] p-20 flex items-center  justify-center w-full h-[65vh] rounded-2xl">
-          <img className=" " src={image} alt="" />
+      <div className="mt-12 flex flex-col p-10 lg:flex-row gap-12 h-full w-full">
+        <div className=" w-full h-[65vh] bg-[#1313130D] p- flex items-center  justify-center  rounded-2xl">
+          <img className=" w-[50%] h-[70%]" src={image} alt="" />
         </div>
         <div className="w-full h-full">
           <h1 className="text-5xl font-bold text-[#131313] mb-4">{bookName}</h1>
