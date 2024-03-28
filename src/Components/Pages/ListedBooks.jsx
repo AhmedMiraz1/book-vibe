@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { getStoredToBookCard } from "../../utils/utils";
+import {  getStoredToReadBook } from "../../utils/utils";
 import BookCard from "../BookCard";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import WhishList from "../WhishList";
 
 const ListedBooks = () => {
   const bookCard = useLoaderData();
@@ -30,7 +31,7 @@ const [tabIndex, setTabIndex] =useState(0)
   };
 
   useEffect(() => {
-    const storedBookIds = getStoredToBookCard();
+    const storedBookIds = getStoredToReadBook();
     if (bookCard.length > 0) {
       const bookStored = [];
       for (const id of storedBookIds) {
@@ -45,11 +46,13 @@ const [tabIndex, setTabIndex] =useState(0)
     }
   }, [bookCard]);
 
+
+
   return (
     <div>
       <div>
         <h1 className="text-center my-9 bg-[#1313130D] py-8 rounded-2xl font-bold text-3xl text-[#131313] ">
-          Book {addToBooks.length}
+          Book 
         </h1>
 
         <div>
@@ -85,7 +88,7 @@ const [tabIndex, setTabIndex] =useState(0)
 		</svg>
 		<span>Read Books</span>
 	</Link>
-	<Link to ={``}
+	<Link to ={`wishList`}
      onClick={()=> setTabIndex(1)}
     className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2 ${tabIndex === 1 ? 'border border-b-0': 'border-b'} rounded-t-lg border-gray-400 text-[#13131380]`}>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -100,6 +103,12 @@ const [tabIndex, setTabIndex] =useState(0)
          {displayBooks.map((bookCard) => (
             <BookCard key={bookCard.id} bookCard={bookCard} />
           ))}
+         </div>
+
+         <div>
+            {
+                displayBooks.map(wishList => <WhishList key={wishList.id} wishList={wishList} />)
+            }
          </div>
         </div>
       </div>

@@ -11,6 +11,8 @@ import ErrorPage from "./Components/ErrorPage";
 import BookDetails from "./Components/BookDetails";
 import BookCard from "./Components/BookCard";
 import WhishList from "./Components/WhishList";
+import Blog from "./Components/Pages/Blog";
+import AboutUs from "./Components/Pages/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "/pageToRead",
         element: <PagesToRead />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />,
       },
       {
         path: "/book/:id",

@@ -11,8 +11,8 @@ const Book = ({book}) => {
 
             <div className="border-2 p-6 rounded-xl h-full">
 
-                <div className="bg-[#F3F3F3] px-32 py-12 rounded-xl">
-                    <img  className='h-40' src={image} alt="" />
+                <div className="bg-[#F3F3F3] px-8 lg:px-32 py-4 lg:py-12 rounded-xl ">
+                    <img   className='h-40 flex mx-auto' src={image} alt="" />
                 </div>
 
                <div className='my-5'>
@@ -21,7 +21,7 @@ const Book = ({book}) => {
                 }
                </div>
               
-                <h1 className='text-2xl font-bold text-[#131313]'>{bookName}</h1>
+                <h1 className=' text-xl lg:text-2xl font-medium lg:font-bold text-[#131313]'>{bookName}</h1>
                 <p className='text-[#131313CC] font-medium my-6'>By : {author}</p>
                 <p className='border-dotted border-b-2'></p>
                 <div className='flex justify-between my-6 text-[#131313CC] font-medium'>

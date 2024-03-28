@@ -5,31 +5,31 @@ const PagesToRead = () => {
 
   const data = [
     {
-      name: "Page A",
+      name: "The Great Gatsby",
       uv: 4000,
       pv: 2400,
       amt: 2400,
     },
     {
-      name: "Page B",
+      name: "To kill a mocking bird",
       uv: 3000,
       pv: 1398,
       amt: 2210,
     },
     {
-      name: "Page C",
+      name: "1984",
       uv: 2000,
       pv: 9800,
       amt: 2290,
     },
     {
-      name: "Page D",
+      name: "The Alchemist",
       uv: 2780,
       pv: 3908,
       amt: 2000,
     },
     {
-      name: "Page E",
+      name: "Pride and prejudice",
       uv: 1890,
       pv: 4800,
       amt: 2181,
@@ -54,10 +54,11 @@ const PagesToRead = () => {
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
   };
   return (
-    <div>
+    <div className="mt-28 w-full">
+        
       <BarChart
         width={500}
-        height={300}
+        height={400}
         data={data}
         margin={{
           top: 20,

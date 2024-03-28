@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 
 const BookCard = ({ bookCard }) => {
-  console.log(bookCard);
+//   console.log(bookCard);
   return (
     <div className='border-2 p-6 rounded-xl my-7 '>
       <div  className="flex gap-6 flex-col lg:flex-row items-center">
@@ -26,9 +27,9 @@ const BookCard = ({ bookCard }) => {
             <div className='flex flex-col gap-6 lg:flex-row justify-between font-medium'>
                 <p className='text-[#328EFF] bg-[#208EFF26] px-5 py-2 rounded-3xl'>Category: {bookCard.category}</p>
                 <p className='text-[#FFAC33] px-5 py-2 rounded-3xl bg-[#FFAC3326] '> Rating : {bookCard.rating}</p>
-                <p>
+                <Link to ="/pageToRead">
                     <button className='px-5 py-2 rounded-3xl text-white bg-[#23BE0A] '>View Details</button>
-                </p>
+                </Link>
             </div>
         </div>
       </div>
