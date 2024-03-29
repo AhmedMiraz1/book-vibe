@@ -7,9 +7,8 @@ const PagesToRead = () => {
 
   const getData = getReadings()
 
-  const [bookName, totalPages]=getData
-  console.log(bookName, totalPages)
-  console.log(getData)
+  // const [bookName, totalPages]=getData
+ 
    
 
   const data = [
@@ -69,7 +68,7 @@ const PagesToRead = () => {
         <ResponsiveContainer >
       <BarChart
         
-        data={data}
+        data={getData}
         margin={{
           top: 20,
           right: 30,
@@ -79,10 +78,10 @@ const PagesToRead = () => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="bookName" stroke="colors" />
-        <YAxis  dataKey=""/>
+        <YAxis  dataKey="totalPages"/>
         <Tooltip/>
         <Bar
-          dataKey='uv'
+          dataKey='totalPages'
           fill="#8884d8"
           shape={<TriangleBar  />}
           label={{ position: "top" }}
