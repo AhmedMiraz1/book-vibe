@@ -1,25 +1,9 @@
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import { getReadings, getWishes } from "../../utils/utils";
-import BookCard from "../BookCard";
-import WhishList from "../WhishList";
+import { Link, Outlet } from "react-router-dom";
 
 const ListedBooks = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [books, setBooks] = useState(getReadings());
-  const [wishes, setWishes] = useState(getWishes());
-
-  const handelBookFilter = (type) => {
-    switch (type) {
-      case "rating":
-        setBooks((books) => books.sort((a, b) => a.rating - b.rating));
-        break;
-
-      default:
-        break;
-    }
-  };
 
   return (
     <div>
@@ -38,13 +22,13 @@ const ListedBooks = () => {
                 </span>
               </summary>
               <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-52">
-                <li onClick={() => handelBookFilter("rating")}>
+                <li>
                   <a>Rating</a>
                 </li>
-                <li onClick={() => handelBookFilter("totalPages")}>
+                <li>
                   <a>Number of page</a>
                 </li>
-                <li onClick={() => handelBookFilter("yearOfPublishing")}>
+                <li>
                   <a>Publish year</a>
                 </li>
               </ul>
@@ -74,7 +58,7 @@ const ListedBooks = () => {
               <span>Read Books</span>
             </Link>
             <Link
-              to={`wishList`}
+              to="wishList"
               onClick={() => setTabIndex(1)}
               className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2 ${
                 tabIndex === 1 ? "border border-b-0" : "border-b"
@@ -97,11 +81,7 @@ const ListedBooks = () => {
             </Link>
           </div>
           <div>
-            {tabIndex === 0
-              ? books.map((book) => <BookCard bookCard={book} key={book.id} />)
-              : wishes.map((wish) => (
-                  <WhishList key={wish.id} wishList={wish} />
-                ))}
+            <Outlet />
           </div>
         </div>
       </div>

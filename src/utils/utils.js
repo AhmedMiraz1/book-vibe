@@ -1,11 +1,9 @@
 import { toast } from "react-toastify";
 
 const getReadings = () => {
-  const readingList = localStorage.getItem("read-book");
-  if (readingList?.length) {
-    return JSON.parse(readingList);
-  }
-  return [];
+  const readingList = localStorage.getItem("read");
+  if (!readingList?.length) return [];
+  return JSON.parse(readingList);
 };
 
 const saveReadings = (book) => {
@@ -16,24 +14,19 @@ const saveReadings = (book) => {
     return toast.error(" You're already added read list");
   }
   readingList.push(book);
-  localStorage.setItem("read-book", JSON.stringify(readingList));
-  toast('Reading List Added')
+  localStorage.setItem("read", JSON.stringify(readingList));
+  toast("Reading List Added");
 };
 
 const getWishes = () => {
-  const wishList = localStorage.getItem("Wish-list");
-  if (wishList?.length) {
-    return JSON.parse(wishList);
-  }
-  return [];
+  const wishList = localStorage.getItem("wish");
+  if (!wishList?.length) return [];
+  return JSON.parse(wishList);
 };
 
 const saveWishes = (book) => {
   const wishList = getWishes();
-  console.log("Book", book)
   const isAlreadyExists = wishList.find((item) => item.id == book.id);
-
-  console.log('isAlreadyExists', isAlreadyExists  )
 
   if (isAlreadyExists) {
     return toast.error("Already added");
@@ -46,11 +39,9 @@ const saveWishes = (book) => {
     return toast.error("You're already reading");
   }
 
-  console.log(wishList)
-  wishList.push(book)
-  localStorage.setItem("wish-List", JSON.stringify([...wishList, book]));
-  toast("You're added wishlist")
-  
+ 
+  localStorage.setItem("wish", JSON.stringify([...wishList, book]));
+  toast("You're added wishlist");
 };
 
 export { getReadings, saveReadings, getWishes, saveWishes };
