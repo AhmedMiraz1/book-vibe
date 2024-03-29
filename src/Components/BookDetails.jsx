@@ -30,11 +30,11 @@ const BookDetails = () => {
   return (
     <div>
       <div className="mt-12 flex flex-col p-10 lg:flex-row gap-12 h-full w-full">
-        <div className=" w-full h-[65vh] bg-[#1313130D] p- flex items-center  justify-center  rounded-2xl">
-          <img className=" w-[50%] h-[70%]" src={image} alt="" />
+        <div className=" w-full h-[35vh] lg:h-[65vh] bg-[#1313130D] p- flex items-center  justify-center  rounded-2xl">
+          <img className=" w-[50%]  h-[70%]" src={image} alt="" />
         </div>
         <div className="w-full h-full">
-          <h1 className="text-5xl font-bold text-[#131313] mb-4">{bookName}</h1>
+          <h1 className=" text-2xl lg:text-5xl font-bold text-[#131313] mb-4">{bookName}</h1>
 
           <p className="text-[#131313CC] font-medium text-xl"> By : {author}</p>
           <hr className="my-5" />
