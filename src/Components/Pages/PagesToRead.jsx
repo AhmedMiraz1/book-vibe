@@ -7,37 +7,37 @@ const PagesToRead = () => {
 
   const getData = getReadings()
 
-  // const [bookName, totalPages]=getData
+ 
  
    
 
   const data = [
     {
-      name: "The Great Gatsby",
+      name: "BookName",
       uv: 4000,
       pv: 2400,
       amt: 2400,
     },
     {
-      name: "To kill a mocking bird",
+      name: "BookName",
       uv: 3000,
       pv: 1398,
       amt: 2210,
     },
     {
-      name: "1984",
+      name: "BookName",
       uv: 2000,
       pv: 9800,
       amt: 2290,
     },
     {
-      name: "The Alchemist",
+      name: "BookName",
       uv: 2780,
       pv: 3908,
       amt: 2000,
     },
     {
-      name: "Pride  prejudice",
+      name: "BookName",
       uv: 1890,
       pv: 4800,
       amt: 2181,
