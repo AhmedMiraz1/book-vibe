@@ -9,10 +9,10 @@ const ListedBooks = () => {
 
 
 
-  const handelSort = () =>{
+
  
 
-  }
+  
 
   return (
     <div>
@@ -31,13 +31,13 @@ const ListedBooks = () => {
                 </span>
               </summary>
               <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-52">
-                <li onChange={()=> handelSort('rating')}>
+                <li>
                   <a>Rating</a>
                 </li>
-                <li onChange={()=> handelSort('totalPages')}>
+                <li >
                   <a>Number of page</a>
                 </li>
-                <li onChange={()=> handelSort('yearOfPublishing')}>
+                <li >
                   <a>Publish year</a>
                 </li>
               </ul>
