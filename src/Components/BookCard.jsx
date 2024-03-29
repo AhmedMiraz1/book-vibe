@@ -10,7 +10,7 @@ const BookCard = () => {
     <div key={bookCard.id} className="border-2 p-6 rounded-xl my-7 ">
       <div className="flex gap-6 flex-col lg:flex-row items-center">
         <div className="bg-[#0D0D0D0D] px-12 py-7 rounded-xl">
-          <img src={bookCard.image} alt="" />
+          <img className="w-36 h-44" src={bookCard.image} alt="" />
         </div>
         <div>
           <h1 className="text-[#131313] text-2xl font-bold">
