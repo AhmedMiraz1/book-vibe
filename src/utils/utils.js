@@ -1,43 +1,56 @@
+import { toast } from "react-toastify";
 
+const getReadings = () => {
+  const readingList = localStorage.getItem("read-book");
+  if (readingList?.length) {
+    return JSON.parse(readingList);
+  }
+  return [];
+};
 
-const getStoredToReadBook = ()=>{
-    const storedToReadBook =localStorage.getItem("read-book")
-    if(storedToReadBook){
-        return JSON.parse(storedToReadBook)
-    }
-    return []
-}
+const saveReadings = (book) => {
+  const readingList = getReadings();
+  const exist = readingList.find((item) => item.id == book.id);
 
+  if (exist) {
+    return toast.error(" You're already added read list");
+  }
+  readingList.push(book);
+  localStorage.setItem("read-book", JSON.stringify(readingList));
+  toast('Reading List Added')
+};
 
+const getWishes = () => {
+  const wishList = localStorage.getItem("Wish-list");
+  if (wishList?.length) {
+    return JSON.parse(wishList);
+  }
+  return [];
+};
 
-const saveToReadBook = id =>{
-    const storedToReadBook =getStoredToReadBook()
-    const exist =storedToReadBook.find(addBook => addBook === id);
-    if(!exist){
-        storedToReadBook.push(id)
-        localStorage.setItem('read-book', JSON.stringify(storedToReadBook))
-    }
-}
+const saveWishes = (book) => {
+  const wishList = getWishes();
+  console.log("Book", book)
+  const isAlreadyExists = wishList.find((item) => item.id == book.id);
 
-const getStoredToWishList = ()=>{
-    const storedToWishList =localStorage.getItem("Wish-list")
-    if(storedToWishList){
-        return JSON.parse(storedToWishList)
-    }
-    return []
-}
+  console.log('isAlreadyExists', isAlreadyExists  )
 
+  if (isAlreadyExists) {
+    return toast.error("Already added");
+  }
 
-const saveToWishList = id =>{
-    const storedToWishList =getStoredToWishList()
-    const exist =storedToWishList.find(addBook => addBook === id);
-    if(!exist){
-        storedToWishList.push(id)
-        localStorage.setItem('wish-List', JSON.stringify(storedToWishList))
-    }
-}
+  const readingList = getReadings();
+  const isAlreadyReading = readingList.find((item) => item.id == book.id);
 
+  if (isAlreadyReading) {
+    return toast.error("You're already reading");
+  }
 
+  console.log(wishList)
+  wishList.push(book)
+  localStorage.setItem("wish-List", JSON.stringify([...wishList, book]));
+  toast("You're added wishlist")
+  
+};
 
-
-export {getStoredToReadBook, saveToReadBook, getStoredToWishList , saveToWishList}
+export { getReadings, saveReadings, getWishes, saveWishes };

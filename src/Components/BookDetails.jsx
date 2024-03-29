@@ -1,14 +1,14 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
-import { saveToReadBook, saveToWishList } from "../utils/utils";
+import { saveReadings, saveWishes } from "../utils/utils";
 // import { useState } from "react";
 
 const BookDetails = () => {
-  // const [readBook, setReadBook]=useState([])
-
   const books = useLoaderData();
+
+  console.log('books', books)
   const { id } = useParams();
   const idInt = parseInt(id);
   const book = books.find((book) => book.id === idInt);
@@ -26,25 +26,8 @@ const BookDetails = () => {
     yearOfPublishing,
   } = book;
 
-  const handelAddToRead = () => {
-    const Exist = saveToReadBook(idInt);
-
-    if (!Exist) {
-      toast("added");
-    } else {
-      toast.error("error");
-    }
-  };
-
-  const handelAddWishList = () => {
-    const Exist = saveToWishList(idInt);
-
-    if (!Exist) {
-      toast("added");
-    } else {
-      toast.error("error");
-    }
-  };
+  const handleReadAdd = () => saveReadings(book);
+  const handleWishAdd = () => saveWishes(book);
 
   return (
     <div>
@@ -60,7 +43,6 @@ const BookDetails = () => {
           <p className="text-xl font-medium text-[#131313CC]">{category}</p>
           <hr className="my-5" />
           <p className="text-[#131313] font-bold">
-            {" "}
             Review : <span className="font-normal">{review}</span>
           </p>
           <p className="text-[#131313] font-bold mt-8 ">
@@ -80,7 +62,7 @@ const BookDetails = () => {
             <span className="tex-[#131313B2] font-normal">
               Number of Pages:
             </span>
-            <span className="text-[#131313] font-semibold">{totalPages}</span>{" "}
+            <span className="text-[#131313] font-semibold">{totalPages}</span>
           </p>
           <p className="flex justify-between my-6">
             <span className="tex-[#131313B2] font-normal">Publisher:</span>
@@ -100,13 +82,13 @@ const BookDetails = () => {
           </p>
 
           <button
-            onClick={handelAddToRead}
+            onClick={handleReadAdd}
             className="text-[#131313]  border-2 px-7 py-4 font-medium rounded-xl mr-3 mt-9 text-lg"
           >
-            Read{" "}
+            Read
           </button>
           <button
-            onClick={handelAddWishList}
+            onClick={handleWishAdd}
             className="bg-[#50B1C9] text-white font-medium text-lg px-7 py-4 rounded-xl"
           >
             Wishlist

@@ -2,17 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import PagesToRead from "./Components/Pages/PagesToRead";
 import Root from "./Root/Root";
+import ErrorPage from "./Components/ErrorPage";
 import Home from "./Components/Pages/Home";
 import ListedBooks from "./Components/Pages/ListedBooks";
-import PagesToRead from "./Components/Pages/PagesToRead";
-import ErrorPage from "./Components/ErrorPage";
-import BookDetails from "./Components/BookDetails";
 import BookCard from "./Components/BookCard";
 import WhishList from "./Components/WhishList";
 import Blog from "./Components/Pages/Blog";
 import AboutUs from "./Components/Pages/AboutUs";
+import BookDetails from "./Components/BookDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,16 +28,16 @@ const router = createBrowserRouter([
         path: "/listedBooks",
         element: <ListedBooks />,
         loader: () => fetch("books.json"),
-        children:[
+        children: [
           {
-           index: true,
-            element:<BookCard/>
+            index: true,
+            element: <BookCard />,
           },
           {
-            path:'wishList',
-            element:<WhishList/>
+            path: "wishList",
+            element: <WhishList />,
           },
-        ]
+        ],
       },
       {
         path: "/pageToRead",

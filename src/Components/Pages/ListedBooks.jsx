@@ -1,51 +1,25 @@
-import { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { getStoredToReadBook } from "../../utils/utils";
-import BookCard from "../BookCard";
+import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import { getReadings, getWishes } from "../../utils/utils";
+import BookCard from "../BookCard";
 import WhishList from "../WhishList";
 
 const ListedBooks = () => {
-  const bookCard = useLoaderData();
   const [tabIndex, setTabIndex] = useState(0);
-//   const [addToBooks, setAddToBooks] = useState([]);
-  const [displayBooks, setDisplayBooks] = useState([]);
+  const [books, setBooks] = useState(getReadings());
+  const [wishes, setWishes] = useState(getWishes());
 
-  console.log('displayBooks', displayBooks.length)
+  const handelBookFilter = (type) => {
+    switch (type) {
+      case "rating":
+        setBooks((books) => books.sort((a, b) => a.rating - b.rating));
+        break;
 
-  const handelBookFilter = (filter) => {
-    console.log("Filter => ", filter)
-    if (filter === "rating") {
-      const RatingBookFilter = displayBooks.sort();
-      setDisplayBooks(RatingBookFilter);
-    } else if (filter === "totalPages") {
-      const TotalPageBookFilter = displayBooks.sort(
-        (a, b) => a.totalPages - b.totalPages
-      );
-      setDisplayBooks(TotalPageBookFilter);
-    } else if (filter === "yearOfPublishing") {
-      const publishBookFilter = displayBooks.sort(
-        (a, b) => a.yearOfPublishing - b.yearOfPublishing
-      );
-      setDisplayBooks(publishBookFilter);
+      default:
+        break;
     }
   };
-
-  useEffect(() => {
-    const storedBookIds = getStoredToReadBook();
-    if (bookCard.length > 0) {
-      const bookStored = [];
-      for (const id of storedBookIds) {
-        const book = bookCard.find((book) => book.id === id);
-        if (book) {
-          bookStored.push(book);
-        }
-      }
-
-    //   setAddToBooks(bookStored);
-      setDisplayBooks(bookStored);
-    }
-  }, [bookCard]);
 
   return (
     <div>
@@ -57,8 +31,8 @@ const ListedBooks = () => {
         <div>
           <div className="flex justify-center ">
             <details className="dropdown mb-20">
-              <summary className="m-1 btn bg-[#23BE0A] text-white">
-                Filter By{" "}
+              <summary className="m-1 btn bg-[#23BE0A] text-white text-lg">
+                Sort By{" "}
                 <span className="text-3xl">
                   <RiArrowDropDownLine />
                 </span>
@@ -123,15 +97,11 @@ const ListedBooks = () => {
             </Link>
           </div>
           <div>
-            {displayBooks.map((bookCard) => (
-              <BookCard key={bookCard.id} bookCard={bookCard} />
-            ))}
-          </div>
-
-          <div>
-            {displayBooks.map((wishList) => (
-              <WhishList key={wishList.id} wishList={wishList} />
-            ))}
+            {tabIndex === 0
+              ? books.map((book) => <BookCard bookCard={book} key={book.id} />)
+              : wishes.map((wish) => (
+                  <WhishList key={wish.id} wishList={wish} />
+                ))}
           </div>
         </div>
       </div>
