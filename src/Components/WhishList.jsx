@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { getWishes, saveWishes } from "../utils/utils";
 
 const WhishList = () => {
@@ -15,7 +14,7 @@ const WhishList = () => {
           setWishes(result);
         }}
       >
-        sort by rating
+        
       </button>
       {wishes.map((wishList) => (
         <div key={wishList.id}>
@@ -61,11 +60,11 @@ const WhishList = () => {
                     {" "}
                     Rating : {wishList.rating}
                   </p>
-                  <Link to="/pageToRead">
+                  <button>
                     <button className="px-5 py-2 rounded-3xl text-white bg-[#23BE0A] ">
                       View Details
                     </button>
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

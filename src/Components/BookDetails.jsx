@@ -7,8 +7,6 @@ import { saveReadings, saveWishes } from "../utils/utils";
 
 const BookDetails = () => {
   const books = useLoaderData();
-
-  console.log('books', books)
   const { id } = useParams();
   const idInt = parseInt(id);
   const book = books.find((book) => book.id === idInt);

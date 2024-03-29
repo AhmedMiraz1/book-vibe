@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { Link, Outlet } from "react-router-dom";
+// import { saveReadings } from "../../utils/utils";
 
 const ListedBooks = () => {
   const [tabIndex, setTabIndex] = useState(0);
+ 
+
+
+
+  const handelSort = () =>{
+ 
+
+  }
 
   return (
     <div>
@@ -22,13 +31,13 @@ const ListedBooks = () => {
                 </span>
               </summary>
               <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-52">
-                <li>
+                <li onChange={()=> handelSort('rating')}>
                   <a>Rating</a>
                 </li>
-                <li>
+                <li onChange={()=> handelSort('totalPages')}>
                   <a>Number of page</a>
                 </li>
-                <li>
+                <li onChange={()=> handelSort('yearOfPublishing')}>
                   <a>Publish year</a>
                 </li>
               </ul>

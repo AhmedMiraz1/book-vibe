@@ -1,7 +1,16 @@
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts";
+import { getReadings } from "../../utils/utils";
 
 const PagesToRead = () => {
   const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red",];
+
+
+  const getData = getReadings()
+
+  const [bookName, totalPages]=getData
+  console.log(bookName, totalPages)
+  console.log(getData)
+   
 
   const data = [
     {
@@ -29,7 +38,7 @@ const PagesToRead = () => {
       amt: 2000,
     },
     {
-      name: "Pride and prejudice",
+      name: "Pride  prejudice",
       uv: 1890,
       pv: 4800,
       amt: 2181,
@@ -49,16 +58,17 @@ const PagesToRead = () => {
   };
 
   const TriangleBar = (props) => {
+    // eslint-disable-next-line react/prop-types
     const { fill, x, y, width, height } = props;
 
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
   };
   return (
-    <div className="mt-28 w-full">
-        
+    <div style={{ width: '100%', height: 500 }} className="mt-28 w-full">
+      
+        <ResponsiveContainer >
       <BarChart
-        width={1450}
-        height={700}
+        
         data={data}
         margin={{
           top: 20,
@@ -68,12 +78,13 @@ const PagesToRead = () => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="bookName" stroke="colors" />
+        <YAxis  dataKey=""/>
+        <Tooltip/>
         <Bar
-          dataKey="uv"
+          dataKey='uv'
           fill="#8884d8"
-          shape={<TriangleBar />}
+          shape={<TriangleBar  />}
           label={{ position: "top" }}
         >
           {data.map((entry, index) => (
@@ -81,6 +92,7 @@ const PagesToRead = () => {
           ))}
         </Bar>
       </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 };
